@@ -91,6 +91,7 @@ export default {
     };
   },
   methods: {
+    //testing for getting id and changing visibility of book info in header 
     show(key){
       this.visibility = true;
       this.book = key;

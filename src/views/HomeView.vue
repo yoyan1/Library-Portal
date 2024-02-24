@@ -29,7 +29,7 @@
         <div class="bottom">
           <p>Recomended for you</p>
           <div class="books-recommended">
-            <a href="#" v-for="book in list.recommendedBooks" @click.prevent="callShow(book.subject)" class="books">
+            <a href="/viewBooks" v-for="book in list.recommendedBooks" class="books">
               <img src="../components/booksImage/philosophy.png" alt="" width="72px">
               <h3>{{ book.subject }}</h3>
             </a>
@@ -39,7 +39,7 @@
       <div class="borrow-wrap">
         <p>Your Recently Borrowed Book</p>
         <div class="recent-borrow">
-          <a href="#" v-for="recent in list.RecentBorrow" @click.prevent="callShow(recent.subject)"  class="books">
+          <a href="/viewBooks" v-for="recent in list.RecentBorrow"   class="books">
             <img src="../components/booksImage/english.png" alt="" width="72px">
             <h3>{{ recent.subject }}</h3>
           </a>
@@ -52,18 +52,18 @@
   </main>
 </template>
 <script>
-export default {
-  data() {
-    return {
-      key: ''
-    }
-  },
-  methods: {
-    callShow(key) {
-      this.show(key)
-    }
-  }
-}
+// export default {
+//   data() {
+//     return {
+//       key: ''
+//     }
+//   },
+//   methods: {
+//     callShow(key) {
+//       this.show(key)
+//     }
+//   }
+// }
 </script>
 <style scope>
   
