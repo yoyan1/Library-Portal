@@ -20,6 +20,7 @@ export default {
   },
   data() {
     return {
+      timeout: null,
       //book info at header book details visibility
       visibility: false,
       showWelcome: true, //show welcome
@@ -99,10 +100,16 @@ export default {
     }
   },
   mounted() {
-    setTimeout(() => {
+    timeout = setTimeout(() => {
       this.showWelcome = false; //hide welcome
     }, 3000);
   },
+  beforeDestroy() {
+    // Clear the timeout in the beforeDestroy hook
+     if (this.timeout) {
+      clearTimeout(this.timeout);
+     }
+   },
 };
 </script>
 <style scoped>
