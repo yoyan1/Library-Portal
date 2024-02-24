@@ -1,29 +1,11 @@
 <script setup>
-  import Recommended from '../components/RecommendedBooks.vue'
-  import RecentBorrow from '../components/RecentBorrow.vue'
+  const props = defineProps({
+    list: Object,
+    show: Function,
+  })
+ 
 </script>
-<script>
-export default {
-  data() {
-    return {
-      //subjects
-      subjects:[
-        "English",
-        "Philosophy",
-        "Chemistry",
-        "Social Science",
-        "Social studies",
-        "Info Tech",
-        "Calculus",
-        "Arts",
-        "Music",
-        "Mass Media",
-        "Mass Communication"
-      ],
-    }
-  },
-}
-</script>
+
 <template>
   <main>
     <div class="container">
@@ -42,23 +24,47 @@ export default {
           </div>
         </div>
         <div class="center">
-          <a href="" v-for="subject in subjects">{{ subject }}</a>
+          <a href="" v-for="subject in list.subjects">{{ subject }}</a>
         </div>
         <div class="bottom">
           <p>Recomended for you</p>
-          <Recommended/>
+          <div class="books-recommended">
+            <a href="#" v-for="book in list.recommendedBooks" @click.prevent="callShow(book.subject)" class="books">
+              <img src="../components/booksImage/philosophy.png" alt="" width="72px">
+              <h3>{{ book.subject }}</h3>
+            </a>
+          </div>
         </div>
       </div>
       <div class="borrow-wrap">
         <p>Your Recently Borrowed Book</p>
-        <RecentBorrow/>
+        <div class="recent-borrow">
+          <a href="#" v-for="recent in list.RecentBorrow" @click.prevent="callShow(recent.subject)"  class="books">
+            <img src="../components/booksImage/english.png" alt="" width="72px">
+            <h3>{{ recent.subject }}</h3>
+          </a>
+        </div>
       </div>
       <div class="subject-wrap">
-        <a href="" v-for="subject in subjects">{{ subject }}</a>
+        <a href="" v-for="subject in list.subjects">{{ subject }}</a>
       </div>
     </div>
   </main>
 </template>
+<script>
+export default {
+  data() {
+    return {
+      key: ''
+    }
+  },
+  methods: {
+    callShow(key) {
+      this.show(key)
+    }
+  }
+}
+</script>
 <style scope>
   
 </style>

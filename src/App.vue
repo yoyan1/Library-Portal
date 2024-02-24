@@ -1,26 +1,109 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-import Bars from './components/icons/ClassicBars.vue'
+import HeaderView from './components/header.vue'
 
 </script>
 
 <template>
-  <header>
-    <div class="nav-bar">
-      <div class="icon">
-        <Bars/>
-      </div>
-      <form action="">
-        <input type="search" name="" id="search" placeholder="search">
-      </form>
-    </div>
-  </header>
+   <Welcome v-if="showWelcome"/>
+  <HeaderView v-if="!showWelcome" :book="book"/>
+  <RouterView v-if="!showWelcome" :list="list" :show="show"/>
+  <div v-if="!showWelcome" class="footer"></div>
 
-  <RouterView />
-
-  <div class="footer"></div>
 </template>
+<script>
+import Welcome from './components/TheWelcome.vue'
 
+export default {
+  components: {
+    Welcome
+  },
+  data() {
+    return {
+      //book info at header book details visibility
+      visibility: false,
+      showWelcome: true, //show welcome
+      //subject key
+      book: '',
+      list:{
+        
+        //Recommended Books list
+        recommendedBooks:[
+          {
+            imageUrl: "../components/booksImage/philosophy.png",
+            subject: "Mathematics"
+          },
+          {
+            imageUrl: "./components/booksImage/english.png",
+            subject: "English"
+          },
+          {
+            imageUrl: "./components/booksImage/english.png",
+            subject: "Science"
+          },
+          {
+            imageUrl: "./components/booksImage/english.png",
+            subject: "Philosophy"
+          },
+          {
+            imageUrl: "./components/booksImage/english.png",
+            subject: "History"
+          }
+        ],
+        //recent borrow list details
+        RecentBorrow:[
+          {
+            imageUrl: "../components/booksImage/math.png",
+            subject: "Mathematics"
+          },
+          {
+            imageUrl: "../components/booksImage/english.png",
+            subject: "English"
+          },
+          {
+            imageUrl: "../components/booksImage/science.png",
+            subject: "Science"
+          },
+          {
+            imageUrl: "../components/booksImage/philosophy.png",
+            subject: "Philosophy"
+          },
+          {
+            imageUrl: "../components/booksImage/history.png",
+            subject: "History"
+          }
+        ],
+        //list of subjects
+        subjects:[
+          "English",
+          "Philosophy",
+          "Chemistry",
+          "Social Science",
+          "Social studies",
+          "Info Tech",
+          "Calculus",
+          "Arts",
+          "Music",
+          "Mass Media",
+          "Mass Communication"
+        ],
+      },
+    };
+  },
+  methods: {
+    show(key){
+      this.visibility = true;
+      this.book = key;
+      window.location.href = '/viewBooks'
+    }
+  },
+  mounted() {
+    setTimeout(() => {
+      this.showWelcome = false; //hide welcome
+    }, 3000);
+  },
+};
+</script>
 <style scoped>
   .footer{
     height: 43px;
