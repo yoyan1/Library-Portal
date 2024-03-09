@@ -32,12 +32,13 @@ if(isset($_GET['id'])){
   
           <div class="book-name">
             <h3><?=$row['title']?></h3>
-            <h5>this is a sub text</h5>
-            <label>roland clarion</label>
+            <h5><?=$row['subtitle']?></h5>
+            <label><?=$row['authors']?></label><br>
+            <label>copies: <?=$row['copies']?></label>
           </div>
         </div>
         <div class="other-info">
-          <label for="">Available</label>
+          <?=$row['copies'] > 0? '<label for="" style="">Available</label>' : '<label for="" style="background-color: #ff0000a1;">Not Available</label>'?>
         </div>
 
     </div>

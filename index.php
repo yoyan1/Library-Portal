@@ -43,11 +43,11 @@
           <p>Books Available</p>
           <div class="books-recommended">
             <?php
-								$sql = mysqli_query($conn, "SELECT * from books where section != 'Reserved'");
+								$sql = mysqli_query($conn, "SELECT * from books where copies != 0 ");
 								while ($row = mysqli_fetch_array($sql)) { ?>
                     <a href="./pages/viewBooks.php?id=<?=$row['bookid']?>" class="books">
                       <img
-                        src="images/philosophy.png"
+                        src="upload/<?=$row['bookimage']?>"
                         alt=""
                         width="72px"
                       />
@@ -57,23 +57,28 @@
           </div>
         </div>
       </div>
-      <div class="borrow-wrap">
-        <p>Reserved Books</p>
-        <div class="recent-borrow">
-        <?php
-						$sql = mysqli_query($conn, "SELECT * from books where section = 'Reserved'");
-						while ($row = mysqli_fetch_array($sql)) { ?>
-                  <a href="./pages/viewBooks.html" class="books">
-                    <img
-                      src="images/english.png"
-                      alt=""
-                      width="72px"
-                    />
-                    <h3><?=$row['title']?></h3>
-                  </a>
-          <?php } ?>
+      <?php $sql = mysqli_query($conn, "SELECT * from books where copies = 0"); 
+      if(mysqli_num_rows($sql) > 0){ ?>
+        <div class="borrow-wrap">
+          <p>Books Not Available</p>
+          <div class="recent-borrow">
+          <?php
+              
+              while ($row = mysqli_fetch_array($sql)) { ?>
+                    <a href="./pages/viewBooks.php?id=<?=$row['bookid']?>" class="books">
+                      <img
+                        src="upload/<?=$row['bookimage']?>"
+                        alt=""
+                        width="72px"
+                      />
+                      <h3><?=$row['title']?></h3>
+                    </a>
+            <?php } ?>
+          </div>
         </div>
-      </div>
+        
+     <?php }
+      ?>
       <div class="subject-wrap">
         <?php $category = mysqli_query($conn, "SELECT * FROM category");
               while($row=mysqli_fetch_array($category)){ 
