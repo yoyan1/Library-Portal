@@ -11,7 +11,7 @@
   <body>
     <header>
       <div class="nav-bar">
-        <img src="images/bars.png" width="29px" alt="" />
+        <!-- <img src="images/bars.png" width="29px" alt="" /> -->
         <form action="">
           <input type="search" name="" id="search" placeholder="Search" />
         </form>
