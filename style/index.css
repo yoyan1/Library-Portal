@@ -50,9 +50,14 @@ input::placeholder {
 
 .container {
   padding: 10px;
-  display: grid;
+  /* display: grid; */
   gap: 10px;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: center; */
+  margin: 0 auto;
 }
 
 .text-wrap {
@@ -235,9 +240,11 @@ input::placeholder {
 
 header {
   background: #3a563a;
-  display: grid;
+  display: flex;
   gap: 10px;
-  padding: 0 0 20px 0;
+  justify-content: center;
+  align-items: center;
+  padding: 0 0 10px 0;
   width: 23.8rem;
   box-shadow: 0px 4px 4px #00000040;
   border-bottom-left-radius: 40px;
@@ -247,8 +254,9 @@ header {
 .book-container {
   display: flex;
   gap: 20px;
-  justify-content: center;
-  padding: 0 20px;
+  margin: 0 auto;
+  padding: 0 30px;
+  margin-bottom: 0.5em;
 }
 
 .book-container img {
@@ -256,9 +264,26 @@ header {
   box-shadow: 0px 3px 5px;
 }
 
-.book-container .book-name {
-  width: 7rem;
+.book-container h5 {
+  margin-top: 0.25em;
+  margin-bottom: 1em;
+  color: #777777;
 }
+
+.other-info {
+  display: flex;
+  padding: 20px 1.5em;
+  justify-content: center;
+}
+
+.other-info label {
+  background-color: rgb(88, 239, 88);
+  border-radius: 7px;
+  padding: 10px;
+  width: 100%;
+  text-align: center;
+}
+
 .nav-bar {
   background: #3a563a;
   box-shadow: 0 0 0;
@@ -270,4 +295,27 @@ header {
 }
 .nav-bar input::placeholder {
   color: #3a563a;
+}
+
+.nav-bar-books {
+  padding: 3px 20px;
+  display: flex;
+  align-items: center;
+  height: 43px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  box-shadow: 0px 4px 4px 0px #00000040;
+  background: #3a563a;
+  margin-bottom: 1em;
+}
+
+.nav-bar-books a {
+  text-decoration: none;
+  color: black;
+}
+
+.back {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
 }
