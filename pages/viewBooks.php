@@ -3,8 +3,6 @@ include "../server/conn.php";
 if(isset($_GET['id'])){
   $sql = mysqli_query($conn, "SELECT * FROM books WHERE bookid = '".$_GET['id']."'");
   $row = mysqli_fetch_array($sql);
-} else{
-
 }
 ?>
 
@@ -23,12 +21,21 @@ if(isset($_GET['id'])){
      </div>
     <div class="view-books-container">
       <div class="book-container">
+        <?php if(empty($row['bookimage'])) {?>
           <img
-            src="../images/science.png"
+            src="../images/book.png"
             width="92px"
             height="106px"
             alt=""
           /> 
+        <?php } else { ?>
+          <img
+            src="../uploads/<?= $row['bookimage']?>"
+            width="92px"
+            height="106px"
+            alt=""
+          /> 
+        <?php } ?>
   
           <div class="book-name">
             <h3><?=$row['title']?></h3>

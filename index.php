@@ -46,12 +46,22 @@
 								$sql = mysqli_query($conn, "SELECT * from books where copies != 0 ");
 								while ($row = mysqli_fetch_array($sql)) { ?>
                     <a href="./pages/viewBooks.php?id=<?=$row['bookid']?>" class="books">
-                      <img
-                        src="upload/<?=$row['bookimage']?>"
-                        alt=""
-                        width="72px"
-                      />
-                      <h3><?=$row['title'] ?></h3>
+                    <?php 
+                        $a = $row['bookimage'];
+                        if(empty($a)) { ?>
+                        <img
+                          src="images/book.png"
+                          alt=""
+                          width="72px"
+                        />
+                      <?php } else { ?>
+                        <img
+                          src="uploads/<?= $a ?>"
+                          alt=""
+                          width="72px"
+                        />
+                      <?php }?>
+                      <h3><?=$row['title']?></h3>
                     </a>
             <?php } ?>
           </div>
@@ -66,11 +76,21 @@
               
               while ($row = mysqli_fetch_array($sql)) { ?>
                     <a href="./pages/viewBooks.php?id=<?=$row['bookid']?>" class="books">
-                      <img
-                        src="upload/<?=$row['bookimage']?>"
-                        alt=""
-                        width="72px"
-                      />
+                      <?php 
+                        $a = $row['bookimage'];
+                        if(empty($a)) { ?>
+                        <img
+                          src="images/book.png"
+                          alt=""
+                          width="72px"
+                        />
+                      <?php } else { ?>
+                        <img
+                          src="uploads/<?= $a ?>"
+                          alt=""
+                          width="72px"
+                        />
+                      <?php }?>
                       <h3><?=$row['title']?></h3>
                     </a>
             <?php } ?>
@@ -87,6 +107,6 @@
                 ?>
       </div>
     </div>
-    <div class="footer"></div>
+    <!-- <div class="footer"></div> -->
   </body>
 </html>
