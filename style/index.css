@@ -44,6 +44,30 @@ input::placeholder {
   font-family: "Aoboshi One", serif;
 }
 
+form{
+  position: fixed;
+  top: 10px;
+}
+
+.suggestion{
+  background: white;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  max-width: 17rem;
+}
+
+.suggestion a{
+  color: black;
+  text-decoration: none;
+  padding: 3px 10px;
+}
+
+.suggestion a:hover{
+  background: #bee6b4;
+}
+
 .book-container {
   display: none;
 }

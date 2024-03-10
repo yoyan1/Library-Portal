@@ -3,6 +3,9 @@ include "../server/conn.php";
 if(isset($_GET['id'])){
   $sql = mysqli_query($conn, "SELECT * FROM books WHERE bookid = '".$_GET['id']."'");
   $row = mysqli_fetch_array($sql);
+} elseif(isset($_GET['title'])){
+  $sql = mysqli_query($conn, "SELECT * FROM books WHERE title = '".$_GET['title']."'");
+  $row = mysqli_fetch_array($sql);
 }
 ?>
 

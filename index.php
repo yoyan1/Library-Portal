@@ -13,7 +13,8 @@
       <div class="nav-bar">
         <!-- <img src="images/bars.png" width="29px" alt="" /> -->
         <form action="">
-          <input type="search" name="" id="search" placeholder="Search" />
+          <input type="search" id="search-input" name="" id="search" placeholder="Search" />
+          <div class="suggestion"></div>
         </form>
       </div>
     </header>
@@ -108,5 +109,34 @@
       </div>
     </div>
     <!-- <div class="footer"></div> -->
+  <script>
+   let searchInput = document.getElementById('search-input');
+    let suggestion = document.querySelector('.suggestion');
+
+searchInput.addEventListener('input', async function() {
+    let input = searchInput.value.trim();
+    if (input.length === 0) {
+        suggestion.innerHTML = ''; 
+        return;
+    }
+
+    try {
+        const response = await fetch(`./php/search.php?text=${encodeURIComponent(input)}`);
+        
+        if (response.ok) {
+            const searchData = await response.json();
+            suggestion.innerHTML = '';
+            searchData.forEach(result => {
+                suggestion.innerHTML += `<a href="./pages/viewBooks.php?title=${result}">${result}</a><br>`;
+            });
+        } else {
+            console.error('Failed to fetch search results:', response.status, response.statusText);
+        }
+    } catch (error) {
+        console.error('Error fetching search results:', error);
+    }
+});
+
+  </script>
   </body>
 </html>
